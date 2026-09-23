@@ -1,6 +1,10 @@
 {
   "name": "MMUST Laptop Clearance System",
-  "description": "Automated QR-code digital laptop clearance, gate security verification, and stolen device tracking system for Masinde Muliro University of Science and Technology.",
-  "requestFramePermissions": ["camera"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "description": "Automated QR-code digital laptop clearance, gate security verification, and stolen device tracking system for Masinde Muliro University of Science and Technology..",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

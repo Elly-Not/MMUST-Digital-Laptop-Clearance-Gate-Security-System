@@ -7,7 +7,18 @@ import { StudentPortal } from './components/StudentModule/StudentPortal';
 import { AdminDashboard } from './components/AdminModule/AdminDashboard';
 import { ThesisView } from './components/ThesisModule/ThesisView';
 import { MMUSTLogo } from './components/Common/MMUSTLogo';
-import { ShieldCheck, Phone, MapPin, Mail, Globe, CheckCircle2 } from 'lucide-react';
+import {
+  ShieldCheck,
+  Phone,
+  MapPin,
+  Mail,
+  Globe,
+  CheckCircle2,
+  Laptop,
+  QrCode,
+  UserCheck,
+  FileText,
+} from 'lucide-react';
 
 export default function App() {
   const [activeRole, setActiveRole] = useState<UserRole>('guard');
@@ -49,7 +60,7 @@ export default function App() {
       />
 
       {/* Main View Port */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 pb-24 sm:pb-8">
         {activeRole === 'guard' && (
           <GuardScannerApp onDataChanged={handleDataChanged} />
         )}
@@ -70,6 +81,72 @@ export default function App() {
           <ThesisView />
         )}
       </main>
+
+      {/* Mobile Ergonomic Bottom Navigation Bar (sm:hidden) */}
+      <nav className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#042038]/95 backdrop-blur-md border-t-2 border-[#FAB582] shadow-2xl flex items-center justify-around px-1 py-1.5 pb-[calc(env(safe-area-inset-bottom)+0.35rem)]">
+        <button
+          onClick={() => setActiveRole('student')}
+          className={`flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer relative min-h-[48px] ${
+            activeRole === 'student'
+              ? 'text-[#FAB582] font-black'
+              : 'text-sky-300 hover:text-white'
+          }`}
+          aria-label="Student Portal"
+        >
+          <div className="relative">
+            <Laptop className="w-5 h-5" />
+            {unreadNotificationCount > 0 && (
+              <span className="absolute -top-1 -right-2 bg-[#FAB582] text-[#052642] font-black text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
+                {unreadNotificationCount}
+              </span>
+            )}
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">Student</span>
+          {activeRole === 'student' && <span className="w-1.5 h-1.5 rounded-full bg-[#FAB582] mt-0.5"></span>}
+        </button>
+
+        <button
+          onClick={() => setActiveRole('guard')}
+          className={`flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer min-h-[48px] ${
+            activeRole === 'guard'
+              ? 'text-[#FAB582] font-black'
+              : 'text-sky-300 hover:text-white'
+          }`}
+          aria-label="Guard Scanner"
+        >
+          <QrCode className="w-5 h-5" />
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">Scanner</span>
+          {activeRole === 'guard' && <span className="w-1.5 h-1.5 rounded-full bg-[#FAB582] mt-0.5"></span>}
+        </button>
+
+        <button
+          onClick={() => setActiveRole('admin')}
+          className={`flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer min-h-[48px] ${
+            activeRole === 'admin'
+              ? 'text-[#FAB582] font-black'
+              : 'text-sky-300 hover:text-white'
+          }`}
+          aria-label="Security Admin"
+        >
+          <UserCheck className="w-5 h-5" />
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">Admin</span>
+          {activeRole === 'admin' && <span className="w-1.5 h-1.5 rounded-full bg-[#FAB582] mt-0.5"></span>}
+        </button>
+
+        <button
+          onClick={() => setActiveRole('thesis')}
+          className={`flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all cursor-pointer min-h-[48px] ${
+            activeRole === 'thesis'
+              ? 'text-[#FAB582] font-black'
+              : 'text-sky-300 hover:text-white'
+          }`}
+          aria-label="Academic Proposal"
+        >
+          <FileText className="w-5 h-5" />
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">Docs</span>
+          {activeRole === 'thesis' && <span className="w-1.5 h-1.5 rounded-full bg-[#FAB582] mt-0.5"></span>}
+        </button>
+      </nav>
 
       {/* MMUST Official Footer */}
       <footer className="bg-[#042038] text-white border-t-4 border-[#FAB582] mt-auto">

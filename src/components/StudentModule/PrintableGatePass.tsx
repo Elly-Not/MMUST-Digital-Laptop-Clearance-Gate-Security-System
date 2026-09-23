@@ -36,29 +36,38 @@ export const PrintableGatePass: React.FC<PrintableGatePassProps> = ({
   const isStolen = laptop.status === 'Stolen';
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-6">
+    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-4 sm:my-6">
         {/* Top Controls Bar (hidden during printing) */}
-        <div className="print:hidden bg-[#042038] text-white px-6 py-4 flex items-center justify-between border-b border-sky-900">
-          <div className="flex items-center space-x-2">
-            <ShieldCheck className="w-5 h-5 text-[#FAB582]" />
-            <div>
-              <h3 className="font-bold text-sm sm:text-base">Official MMUST Digital Laptop Clearance Pass</h3>
-              <p className="text-xs text-sky-200">Generate, Print & Stick on Laptop Bottom Shell or Keep on Phone</p>
+        <div className="print:hidden bg-[#042038] text-white px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-sky-900">
+          <div className="flex items-center justify-between sm:justify-start space-x-2">
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-5 h-5 text-[#FAB582] shrink-0" />
+              <div>
+                <h3 className="font-bold text-xs sm:text-base">MMUST Laptop Clearance Pass</h3>
+                <p className="text-[11px] sm:text-xs text-sky-200">Official gate pass sticker & digital QR</p>
+              </div>
             </div>
+            <button
+              onClick={onClose}
+              className="sm:hidden text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
-          <div className="flex items-center space-x-2">
+
+          <div className="flex items-center space-x-2 justify-end">
             <button
               onClick={handlePrint}
-              className="bg-[#007BB6] hover:bg-[#083B66] text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer"
+              className="bg-[#007BB6] hover:bg-[#083B66] text-white px-3 py-2 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer flex-1 sm:flex-initial min-h-[38px]"
               title="Print clearance sticker card"
             >
               <Printer className="w-4 h-4 text-[#FAB582]" />
-              <span>Print Sticker</span>
+              <span>Print Pass</span>
             </button>
             <button
               onClick={handleDownloadQr}
-              className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer flex-1 sm:flex-initial min-h-[38px]"
               title="Download QR code image file"
             >
               <Download className="w-4 h-4" />
@@ -66,7 +75,7 @@ export const PrintableGatePass: React.FC<PrintableGatePassProps> = ({
             </button>
             <button
               onClick={onClose}
-              className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors ml-2 cursor-pointer"
+              className="hidden sm:flex text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors ml-2 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -74,9 +83,9 @@ export const PrintableGatePass: React.FC<PrintableGatePassProps> = ({
         </div>
 
         {/* Printable Pass Body */}
-        <div className="p-6 sm:p-8 bg-slate-50 printable-area">
+        <div className="p-3 sm:p-8 bg-slate-50 printable-area">
           {/* Main Card Border with University Security Pattern */}
-          <div className={`relative bg-white rounded-xl border-2 ${isStolen ? 'border-red-500' : 'border-[#007BB6]'} p-6 shadow-sm overflow-hidden`}>
+          <div className={`relative bg-white rounded-xl border-2 ${isStolen ? 'border-red-500' : 'border-[#007BB6]'} p-4 sm:p-6 shadow-sm overflow-hidden`}>
             
             {/* Watermark Crest Background */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none flex items-center justify-center">

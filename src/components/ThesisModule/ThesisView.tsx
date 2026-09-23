@@ -83,10 +83,10 @@ def generate_qr(laptop):
       </div>
 
       {/* Chapter Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-2">
+      <div className="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto no-scrollbar whitespace-nowrap">
         <button
           onClick={() => setActiveChapter('ch1')}
-          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 ${
             activeChapter === 'ch1'
               ? 'bg-[#007BB6] text-white shadow-sm'
               : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
@@ -96,7 +96,7 @@ def generate_qr(laptop):
         </button>
         <button
           onClick={() => setActiveChapter('ch2')}
-          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 ${
             activeChapter === 'ch2'
               ? 'bg-[#007BB6] text-white shadow-sm'
               : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
@@ -106,7 +106,7 @@ def generate_qr(laptop):
         </button>
         <button
           onClick={() => setActiveChapter('ch3')}
-          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 ${
             activeChapter === 'ch3'
               ? 'bg-[#007BB6] text-white shadow-sm'
               : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
@@ -116,7 +116,7 @@ def generate_qr(laptop):
         </button>
         <button
           onClick={() => setActiveChapter('code')}
-          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
             activeChapter === 'code'
               ? 'bg-[#007BB6] text-white shadow-sm'
               : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'

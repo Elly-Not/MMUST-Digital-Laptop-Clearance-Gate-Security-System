@@ -94,16 +94,16 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({
           </div>
 
           {/* Quick Controls: Switch Student & Notification Alert Trigger */}
-          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 w-full md:w-auto">
             {/* Switch Active Student Account */}
-            <div className="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 text-xs">
-              <User className="w-3.5 h-3.5 text-slate-500" />
-              <label htmlFor="student-select" className="text-slate-500 text-[11px]">Student:</label>
+            <div className="flex items-center space-x-1.5 bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 text-xs">
+              <User className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+              <label htmlFor="student-select" className="text-slate-500 text-[11px] shrink-0">Student:</label>
               <select
                 id="student-select"
                 value={selectedRegNo}
                 onChange={(e) => setSelectedRegNo(e.target.value)}
-                className="bg-transparent font-bold text-slate-800 focus:outline-none cursor-pointer"
+                className="bg-transparent font-bold text-slate-800 focus:outline-none cursor-pointer truncate flex-1 min-w-0"
               >
                 {students.map((s) => (
                   <option key={s.reg_no} value={s.reg_no}>
@@ -113,28 +113,30 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({
               </select>
             </div>
 
-            {/* Notification Button */}
-            <button
-              onClick={() => setShowNotificationDrawer(!showNotificationDrawer)}
-              className="relative bg-sky-50 hover:bg-sky-100 text-[#083B66] border border-sky-300 px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
-            >
-              <Bell className="w-3.5 h-3.5 text-[#007BB6]" />
-              <span>Gate Alerts</span>
-              {unreadCount > 0 && (
-                <span className="bg-[#FAB582] text-[#052642] text-[10px] font-black px-1.5 py-0.2 rounded-full">
-                  {unreadCount}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              {/* Notification Button */}
+              <button
+                onClick={() => setShowNotificationDrawer(!showNotificationDrawer)}
+                className="relative bg-sky-50 hover:bg-sky-100 text-[#083B66] border border-sky-300 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer flex-1 sm:flex-initial min-h-[44px]"
+              >
+                <Bell className="w-3.5 h-3.5 text-[#007BB6]" />
+                <span>Gate Alerts</span>
+                {unreadCount > 0 && (
+                  <span className="bg-[#FAB582] text-[#052642] text-[10px] font-black px-1.5 py-0.2 rounded-full">
+                    {unreadCount}
+                  </span>
+                )}
+              </button>
 
-            {/* Register New Laptop Button */}
-            <button
-              onClick={() => setShowRegisterModal(true)}
-              className="bg-[#007BB6] hover:bg-[#083B66] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
-            >
-              <PlusCircle className="w-4 h-4 text-[#FAB582]" />
-              <span>Register New Laptop</span>
-            </button>
+              {/* Register New Laptop Button */}
+              <button
+                onClick={() => setShowRegisterModal(true)}
+                className="bg-[#007BB6] hover:bg-[#083B66] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer flex-1 sm:flex-initial min-h-[44px]"
+              >
+                <PlusCircle className="w-4 h-4 text-[#FAB582]" />
+                <span>Register Laptop</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -287,20 +289,20 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({
                       <span>Registered on {laptop.registered_at.split(' ')[0]}</span>
                     </div>
 
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
                       {/* View & Print Gate Pass */}
                       <button
                         onClick={() => setSelectedLaptopForPass(laptop)}
-                        className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                        className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer flex-1 sm:flex-initial min-h-[40px]"
                       >
                         <QrCode className="w-3.5 h-3.5 text-[#007BB6]" />
-                        <span>View / Print QR Pass</span>
+                        <span>View / Print Pass</span>
                       </button>
 
                       {/* Report Stolen or Unblock */}
                       <button
                         onClick={() => setSelectedLaptopForStolen(laptop)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                        className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer flex-1 sm:flex-initial min-h-[40px] ${
                           isStolen
                             ? 'bg-[#007BB6] hover:bg-[#083B66] text-white'
                             : 'bg-red-50 hover:bg-red-100 text-red-700 border border-red-200'

@@ -197,11 +197,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
 
       {/* Tabs Navigation */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div className="border-b border-slate-200 bg-slate-50/70 px-4 pt-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center space-x-1">
+        <div className="border-b border-slate-200 bg-slate-50/70 px-3 sm:px-4 pt-2.5 sm:pt-3 flex items-center justify-between gap-3">
+          <div className="flex items-center space-x-1 overflow-x-auto no-scrollbar py-0.5 w-full sm:w-auto -mx-1 px-1">
             <button
               onClick={() => setActiveTab('logs')}
-              className={`px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'logs'
                   ? 'border-[#007BB6] text-[#007BB6] bg-white shadow-sm'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -212,7 +212,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
 
             <button
               onClick={() => setActiveTab('laptops')}
-              className={`px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'laptops'
                   ? 'border-[#007BB6] text-[#007BB6] bg-white shadow-sm'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -223,7 +223,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
 
             <button
               onClick={() => setActiveTab('stolen')}
-              className={`px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'stolen'
                   ? 'border-red-600 text-red-700 bg-white shadow-sm'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -234,7 +234,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
 
             <button
               onClick={() => setActiveTab('notifications')}
-              className={`px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'notifications'
                   ? 'border-[#007BB6] text-[#007BB6] bg-white shadow-sm'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -244,7 +244,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
             </button>
           </div>
 
-          <span className="text-xs text-slate-500 pb-2 hidden md:inline">
+          <span className="text-xs text-slate-500 pb-2 hidden md:inline shrink-0">
             MMUST Security Directorate • Active Surveillance
           </span>
         </div>
@@ -308,7 +308,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
 
             {/* Logs Table */}
             <div className="overflow-x-auto rounded-xl border border-slate-200">
-              <table className="w-full text-left text-xs">
+              <table className="w-full text-left text-xs min-w-[680px]">
                 <thead className="bg-slate-100 text-slate-700 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="px-3.5 py-2.5">Log ID / Time</th>
@@ -395,7 +395,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onDataChanged })
         {activeTab === 'laptops' && (
           <div className="p-4 sm:p-6 space-y-4">
             <div className="overflow-x-auto rounded-xl border border-slate-200">
-              <table className="w-full text-left text-xs">
+              <table className="w-full text-left text-xs min-w-[680px]">
                 <thead className="bg-slate-100 text-slate-700 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="px-3.5 py-2.5">Device ID</th>

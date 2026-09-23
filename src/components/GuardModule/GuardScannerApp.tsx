@@ -251,19 +251,19 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
     <div className="space-y-6 max-w-6xl mx-auto pb-12">
       {/* Real-time Student Notification Toast when guard logs gate clearance */}
       {recentNotificationToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#042038] text-white p-4 rounded-2xl shadow-2xl border-2 border-[#FAB582] max-w-md animate-bounce sm:animate-none">
+        <div className="fixed bottom-20 left-3 right-3 sm:bottom-6 sm:left-auto sm:right-6 z-50 bg-[#042038] text-white p-4 rounded-2xl shadow-2xl border-2 border-[#FAB582] sm:max-w-md animate-bounce sm:animate-none">
           <div className="flex items-start space-x-3">
             <div className="w-8 h-8 rounded-lg bg-[#FAB582] text-[#052642] flex items-center justify-center shrink-0 font-bold">
               <Send className="w-4 h-4" />
             </div>
-            <div className="flex-1">
-              <div className="flex items-center justify-between">
-                <h5 className="font-bold text-xs text-[#FAB582]">STUDENT NOTIFIED VIA SMS & APP</h5>
-                <span className="text-[10px] text-sky-200">{recentNotificationToast.timestamp}</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <h5 className="font-bold text-xs text-[#FAB582] truncate">STUDENT NOTIFIED VIA SMS & APP</h5>
+                <span className="text-[10px] text-sky-200 shrink-0">{recentNotificationToast.timestamp}</span>
               </div>
-              <p className="text-xs font-semibold text-white mt-0.5">{recentNotificationToast.title}</p>
+              <p className="text-xs font-semibold text-white mt-0.5 truncate">{recentNotificationToast.title}</p>
               <p className="text-[11px] text-sky-100 mt-1 line-clamp-2">{recentNotificationToast.message}</p>
-              <div className="mt-2 text-[10px] bg-[#021424] px-2 py-0.5 rounded text-sky-300 font-mono">
+              <div className="mt-2 text-[10px] bg-[#021424] px-2 py-0.5 rounded text-sky-300 font-mono truncate">
                 Recipient: {recentNotificationToast.recipient_phone} ({recentNotificationToast.reg_no})
               </div>
             </div>
@@ -272,22 +272,22 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
       )}
 
       {/* Top Gate & Officer Control Bar */}
-      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         {/* Gate Selection */}
-        <div className="flex items-center space-x-3">
-          <div className="w-11 h-11 rounded-xl bg-sky-100 text-[#007BB6] border border-sky-300 flex items-center justify-center shrink-0 shadow-inner">
-            <Building className="w-6 h-6" />
+        <div className="flex items-center space-x-3 flex-1 min-w-0">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-sky-100 text-[#007BB6] border border-sky-300 flex items-center justify-center shrink-0 shadow-inner">
+            <Building className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <div>
-            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+          <div className="flex-1 min-w-0">
+            <label className="block text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">
               Active MMUST Security Gate
             </label>
             <select
               value={selectedGate}
               onChange={(e) => setSelectedGate(e.target.value)}
-              className="mt-0.5 bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs sm:text-sm font-bold text-[#083B66] focus:ring-2 focus:ring-[#007BB6] focus:outline-none cursor-pointer"
+              className="w-full mt-0.5 bg-slate-50 border border-slate-300 rounded-lg px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-[#083B66] focus:ring-2 focus:ring-[#007BB6] focus:outline-none cursor-pointer truncate"
             >
-              <option value="ALL">All MMUST University Gates (Consolidated)</option>
+              <option value="ALL">All MMUST Gates (Consolidated)</option>
               {MMUST_GATES.map((g) => (
                 <option key={g} value={g}>
                   {g}
@@ -298,16 +298,16 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
         </div>
 
         {/* Assigned Security Officer */}
-        <div className="flex items-center space-x-3 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
+        <div className="flex items-center space-x-3 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200 shrink-0">
           <img
             src={selectedGuard.photo}
             alt={selectedGuard.name}
-            className="w-10 h-10 rounded-full object-cover border-2 border-[#007BB6] shadow-sm"
+            className="w-10 h-10 rounded-full object-cover border-2 border-[#007BB6] shadow-sm shrink-0"
           />
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center space-x-1.5">
-              <span className="text-xs font-bold text-slate-800">{selectedGuard.name}</span>
-              <span className="bg-[#FAB582] text-[#052642] text-[10px] font-mono font-black px-1.5 py-0.2 rounded">
+              <span className="text-xs font-bold text-slate-800 truncate">{selectedGuard.name}</span>
+              <span className="bg-[#FAB582] text-[#052642] text-[10px] font-mono font-black px-1.5 py-0.2 rounded shrink-0">
                 {selectedGuard.badge_no}
               </span>
             </div>
@@ -317,7 +317,7 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
                 const found = guards.find((g) => g.guard_id === e.target.value);
                 if (found) setSelectedGuard(found);
               }}
-              className="text-[11px] text-slate-600 bg-transparent border-0 focus:outline-none cursor-pointer hover:underline"
+              className="text-[11px] text-slate-600 bg-transparent border-0 focus:outline-none cursor-pointer hover:underline truncate max-w-[200px]"
             >
               {guards.map((g) => (
                 <option key={g.guard_id} value={g.guard_id}>
@@ -502,7 +502,7 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
             </div>
 
             {/* Video Viewfinder / Scanner Area */}
-            <div className="relative bg-slate-900 rounded-xl overflow-hidden aspect-video flex flex-col items-center justify-center border-2 border-slate-800 shadow-inner">
+            <div className="relative bg-slate-900 rounded-xl overflow-hidden aspect-[4/3] sm:aspect-video min-h-[220px] max-h-[380px] flex flex-col items-center justify-center border-2 border-slate-800 shadow-inner">
               <video
                 ref={videoRef}
                 className={`w-full h-full object-cover ${isCameraActive ? 'block' : 'hidden'}`}
@@ -512,7 +512,7 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
               {/* Viewfinder Target Overlay */}
               {isCameraActive ? (
                 <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                  <div className="w-56 h-56 border-2 border-[#FAB582] rounded-2xl relative shadow-2xl">
+                  <div className="w-44 h-44 sm:w-56 sm:h-56 border-2 border-[#FAB582] rounded-2xl relative shadow-2xl">
                     {/* Corner Reticles */}
                     <div className="absolute top-0 left-0 w-5 h-5 border-t-4 border-l-4 border-sky-400 -mt-1 -ml-1"></div>
                     <div className="absolute top-0 right-0 w-5 h-5 border-t-4 border-r-4 border-sky-400 -mt-1 -mr-1"></div>
@@ -522,18 +522,18 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
                     {/* Animated Scanning Beam */}
                     <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-[#FAB582] to-transparent animate-pulse absolute top-1/2"></div>
                   </div>
-                  <span className="absolute bottom-4 bg-black/70 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm font-medium">
+                  <span className="absolute bottom-3 sm:bottom-4 bg-black/75 text-white text-[11px] sm:text-xs px-3 py-1 rounded-full backdrop-blur-sm font-medium">
                     Align student QR code inside box
                   </span>
                 </div>
               ) : (
-                <div className="text-center p-6 space-y-3">
-                  <div className="w-14 h-14 rounded-2xl bg-[#042038] border border-sky-700/50 flex items-center justify-center mx-auto text-[#FAB582]">
-                    <QrCode className="w-8 h-8" />
+                <div className="text-center p-4 sm:p-6 space-y-3">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#042038] border border-sky-700/50 flex items-center justify-center mx-auto text-[#FAB582]">
+                    <QrCode className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-sm">Camera Feed Offline</h4>
-                    <p className="text-xs text-slate-400 mt-0.5 max-w-xs">
+                    <p className="text-xs text-slate-400 mt-0.5 max-w-xs mx-auto">
                       Activate phone/device camera to scan printed stickers or phone screens in real-time.
                     </p>
                   </div>
@@ -544,7 +544,7 @@ export const GuardScannerApp: React.FC<GuardScannerAppProps> = ({ onDataChanged 
                   )}
                   <button
                     onClick={startCamera}
-                    className="bg-[#007BB6] hover:bg-[#083B66] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 mx-auto shadow-md transition-all cursor-pointer"
+                    className="bg-[#007BB6] hover:bg-[#083B66] text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 mx-auto shadow-md transition-all cursor-pointer min-h-[44px]"
                   >
                     <Camera className="w-4 h-4 text-[#FAB582]" />
                     <span>Launch Gate Camera</span>
